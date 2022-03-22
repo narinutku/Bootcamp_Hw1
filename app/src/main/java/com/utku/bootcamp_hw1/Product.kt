@@ -1,6 +1,6 @@
 package com.utku.bootcamp_hw1
 
-import java.io.Serializable
+
 
 class Product(
     var pictureUrl: String,
@@ -9,5 +9,4 @@ class Product(
     var price: Float,
     var description: String,
     var productCategory: ProductCategory
-) :Serializable {
-}
+)

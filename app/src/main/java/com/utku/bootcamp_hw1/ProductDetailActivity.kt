@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.utku.bootcamp_hw1.databinding.ActivityProductDetailBinding
-import java.text.DecimalFormat
 
 class ProductDetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityProductDetailBinding
@@ -39,13 +38,21 @@ class ProductDetailActivity : AppCompatActivity() {
         }
 
         binding.btnBackToProduct.setOnClickListener {
-            val intent = Intent()
-
-            intent.putExtra("totalPrice", totalPrice)
-
-            setResult(RESULT_OK, intent)
-            finish()
+            backToPreviousPage()
         }
+    }
+
+    override fun onBackPressed() {
+        backToPreviousPage()
+    }
+
+    private fun backToPreviousPage() {
+        val intent = Intent()
+
+        intent.putExtra("totalPrice", totalPrice)
+
+        setResult(RESULT_OK, intent)
+        finish()
     }
 
 //

@@ -63,6 +63,7 @@ class ProductListActivity : AppCompatActivity() {
 
         productList = Util.getProductList(categoryId)
 
+
         binding.rcvProduct.adapter = ProductAdapter(
             this, productList,
             ::itemClickAddBasket, ::itemClickGoDetail, isLogin
@@ -79,7 +80,7 @@ class ProductListActivity : AppCompatActivity() {
 
     private fun updateTotalPrice(price: Float) {
 
-        //küsüratta iki basamak olmasına rağmen sepete toplanırken bazen virgülden sonra 6 basamak oldu bunu düzeltmek için kullandım
+
 //        val df = DecimalFormat("#.##")
 //        val roundoff = df.format(price)
 
@@ -106,6 +107,7 @@ class ProductListActivity : AppCompatActivity() {
 
             val returnValue = result.data?.getFloatExtra("totalPrice", 0f)
             if (returnValue != null) {
+                totalPrice=returnValue
                 updateTotalPrice(returnValue)
             }
         }

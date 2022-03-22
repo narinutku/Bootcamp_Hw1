@@ -15,6 +15,7 @@ object Util {
         )
     }
     fun toDecimalFormat(float: Float): String? {
+        //küsüratta iki basamak olmasına rağmen sepete toplanırken bazen virgülden sonra 6 basamak oldu bunu düzeltmek için kullandım
         val df = DecimalFormat("#.##")
         val roundoff = df.format(float)
             return roundoff
