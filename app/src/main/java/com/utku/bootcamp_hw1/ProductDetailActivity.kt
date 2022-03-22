@@ -9,34 +9,33 @@ import com.utku.bootcamp_hw1.databinding.ActivityProductDetailBinding
 import java.text.DecimalFormat
 
 class ProductDetailActivity : AppCompatActivity() {
-    lateinit var binding:ActivityProductDetailBinding
-    var totalPrice:Float=0f
+    lateinit var binding: ActivityProductDetailBinding
+    var totalPrice: Float = 0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityProductDetailBinding.inflate(layoutInflater)
+        binding = ActivityProductDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-       // val product=intent.getSerializableExtra("product") as Product
-        val product=Util.product!!
-        totalPrice=intent.getFloatExtra("totalPrice",0f)
-        val uri: Uri = Uri.parse("android.resource://${this.packageName}/"+product.pictureUrl)
+        // val product=intent.getSerializableExtra("product") as Product
+        val product = Util.product!!
+        totalPrice = intent.getFloatExtra("totalPrice", 0f)
+        val uri: Uri = Uri.parse("android.resource://${this.packageName}/" + product.pictureUrl)
         binding.imageProductDetail.setImageURI(null)
         binding.imageProductDetail.setImageURI(uri)
-        binding.tvBrand.text=product.brand
-        binding.tvPrice.text="₺"+product.price.toString()
-        binding.tvProductName.text=product.name
-        binding.tvTotalPrice.text="₺"+totalPrice.toString()
-        binding.tvDescription.text=product.description
+        binding.tvBrand.text = product.brand
+        binding.tvPrice.text = "₺" + product.price.toString()
+        binding.tvProductName.text = product.name
+        binding.tvTotalPrice.text = "₺" + Util.toDecimalFormat(totalPrice)
+        binding.tvDescription.text = product.description
 
         isVisible()
 
         binding.imBtnAddBasket.setOnClickListener {
-            totalPrice+=product.price
-            val df = DecimalFormat("#.##")
-            val roundoff = df.format(totalPrice)
+            totalPrice += product.price
 
-            binding.tvTotalPrice.text=roundoff.toString()
+
+            binding.tvTotalPrice.text = Util.toDecimalFormat(totalPrice)
         }
 
         binding.btnBackToProduct.setOnClickListener {
@@ -48,6 +47,8 @@ class ProductDetailActivity : AppCompatActivity() {
             finish()
         }
     }
+
+//
 
     private fun isVisible() {
         if (!intent.getBooleanExtra("isLogin", false)) {

@@ -73,17 +73,17 @@ class ProductListActivity : AppCompatActivity() {
 
     private fun itemClickAddBasket(position: Int) {
 
-        totalPrice+=productList[position].price
+        totalPrice += productList[position].price
         updateTotalPrice(totalPrice)
     }
 
     private fun updateTotalPrice(price: Float) {
 
         //küsüratta iki basamak olmasına rağmen sepete toplanırken bazen virgülden sonra 6 basamak oldu bunu düzeltmek için kullandım
-        val df = DecimalFormat("#.##")
-        val roundoff = df.format(price)
+//        val df = DecimalFormat("#.##")
+//        val roundoff = df.format(price)
 
-        binding.tvTotalPrice.text = "₺" + roundoff.toString()
+        binding.tvTotalPrice.text = "₺" + Util.toDecimalFormat(price)
     }
 
     private fun itemClickGoDetail(position: Int) {

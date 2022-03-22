@@ -1,5 +1,7 @@
 package com.utku.bootcamp_hw1
 
+import java.text.DecimalFormat
+
 object Util {
     var product: Product? =null
     fun getProductCategoryList(): ArrayList<ProductCategory> {
@@ -11,6 +13,11 @@ object Util {
             ProductCategory("Enerji İçeceği", 4),
             ProductCategory("Maden Suyu", 5)
         )
+    }
+    fun toDecimalFormat(float: Float): String? {
+        val df = DecimalFormat("#.##")
+        val roundoff = df.format(float)
+            return roundoff
     }
 
     fun getProductList(categoryId: Int): ArrayList<Product> {

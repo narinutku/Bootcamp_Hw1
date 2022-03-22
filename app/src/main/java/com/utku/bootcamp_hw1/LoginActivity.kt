@@ -25,7 +25,8 @@ class LoginActivity : AppCompatActivity() {
                 binding.etPassword.setSelection(binding.etPassword.text.length)
                 visibility = false
             } else {
-                binding.etPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding.etPassword.transformationMethod =
+                    HideReturnsTransformationMethod.getInstance()
                 binding.btnChangeVisibility.setImageResource(R.drawable.ic_baseline_visibility_off_24)
                 binding.etPassword.setSelection(binding.etPassword.text.length)
                 visibility = true
